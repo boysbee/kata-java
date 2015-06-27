@@ -79,7 +79,12 @@ public class FizzBuzzTest {
     }
 
     @Test
-    public void put_33_return_fizzbuzz() {
+    public void put_33_return_fizz() {
         assertEquals("fizz", FizzBuzz.getResult(33));
+    }
+
+    @Test
+    public void put_35_return_buzz() {
+        assertEquals("buzz", FizzBuzz.getResult(35));
     }
 }
