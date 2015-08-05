@@ -2,6 +2,11 @@ package com.test.completepattern.java8;
 
 import java.util.stream.*;
 
+/**
+ * Thank for this solution by tomaspinos.
+ *
+ * http://www.codewars.com/users/tomaspinos
+ */
 public class CompletePatternJava8 {
     public static String pattern(int n) {
         return n < 1 ? "" : IntStream.iterate(n, i -> i - 1).limit(n)
