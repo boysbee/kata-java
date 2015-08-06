@@ -35,4 +35,23 @@ public class EANValidator {
     private static boolean isOdd(int count) {
         return (count % 2) == 0;
     }
+
+    /**
+     * java8 solution
+     * private static int factor = 3;
+
+     public static boolean validate(final String eanCode) {
+
+     int checksum = eanCode
+     .chars()
+     .limit(eanCode.length() - 1)
+     .map(i -> Character.getNumericValue((char) i))
+     .reduce(0, (sum, i) -> {
+     factor = factor == 1 ? 3 : 1;
+     return sum + i * factor;
+     });
+     checksum = (checksum % 10 == 0 ? 0 : 10 - (checksum % 10));
+     return checksum == Character.getNumericValue(eanCode.charAt(eanCode.length() - 1));
+     }
+     */
 }
