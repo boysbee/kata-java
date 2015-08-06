@@ -8,22 +8,36 @@ public class EANValidator {
         int count = 0;
         int sum = 0;
         int eanCodeLenght = eanCode.length();
-        char last = eanCode.charAt(eanCodeLenght -1);
-        String lastChar = String.valueOf(last);
-        int l = Integer.parseInt(lastChar);
-        while( eanCodeLenght > count && count < (eanCodeLenght -1)) {
+        char lastChar = eanCode.charAt(eanCodeLenght - 1);
+        int lastValue = Integer.parseInt(String.valueOf(lastChar));
+        while (eanCodeLenght > count && count < (eanCodeLenght - 1)) {
             char ch = eanCode.charAt(count);
-            String number = String.valueOf(ch);
-            int value = Integer.parseInt(number);
-            if(((count + 1) % 2) == 0) {
-                sum = sum + ( value * 3);
-            } else {
-                sum = sum + value;
-            }
+            int value = Integer.parseInt(String.valueOf(ch));
+            sum = sum(value,count,sum);
             count++;
         }
-        int result = (sum % 10 ) == 0 ? 0 : 10 - ( sum % 10 );
 
-        return result == l;
+        return lastValue == (isDividableBy10(sum) ? 0 : defaultFomular(sum));
+    }
+
+    private static int sum(int value,int count, int sum) {
+        if (isOdd(count + 1)) {
+            sum = sum + (value * 3);
+        } else {
+            sum = sum + value;
+        }
+        return sum;
+    }
+
+    private static boolean isDividableBy10(int sum) {
+        return (sum % 10) == 0;
+    }
+
+    private static int defaultFomular(int sum) {
+        return 10 - (sum % 10);
+    }
+
+    private static boolean isOdd(int count) {
+        return (count % 2) == 0;
     }
 }
