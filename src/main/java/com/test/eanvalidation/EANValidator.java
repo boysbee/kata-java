@@ -13,20 +13,15 @@ public class EANValidator {
         while (eanCodeLenght > count && count < (eanCodeLenght - 1)) {
             char ch = eanCode.charAt(count);
             int value = Integer.parseInt(String.valueOf(ch));
-            sum = sum(value,count,sum);
+            sum += sum(value, count);
             count++;
         }
 
         return lastValue == (isDividableBy10(sum) ? 0 : defaultFomular(sum));
     }
 
-    private static int sum(int value,int count, int sum) {
-        if (isOdd(count + 1)) {
-            sum = sum + (value * 3);
-        } else {
-            sum = sum + value;
-        }
-        return sum;
+    private static int sum(int value, int count) {
+        return isOdd(count + 1) ? (value * 3) : value;
     }
 
     private static boolean isDividableBy10(int sum) {
