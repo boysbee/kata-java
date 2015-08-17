@@ -4,17 +4,12 @@ package com.test.reversestring;
  * Created by boysbee on 8/12/2015 AD.
  */
 public class Reverse {
-    public static String reverse(String str) {
-        int n = str.length();
-        return convert(str, n);
+    public String reverse(String str) {
+        return convert(str, str.length());
     }
 
-    public static String convert(String str, int n) {
-        if (n == 0) {
-            return "";
-        }
-
-        return str.charAt(n) + convert(str, n - 1);
+    private static String convert(String str, int len) {
+        return len == 0 ? "" : Character.toString(str.charAt(len -1)) + convert(str, len - 1);
     }
 
 
