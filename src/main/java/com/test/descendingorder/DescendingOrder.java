@@ -1,10 +1,21 @@
 package com.test.descendingorder;
 
-/**
- * Created by boysbee on 8/9/2015 AD.
- */
+import java.util.Collections;
+import java.util.stream.Collectors;
+
 public class DescendingOrder {
-    public static int sortDesc(int i) {
-        return Integer.parseInt(new StringBuilder(Integer.toString(i)).reverse().toString());
+    public static int sortDesc(int number) {
+//        String[] spiltResult = Integer.toString(number).split("");
+//        Arrays.sort(spiltResult, Collections.reverseOrder());
+//        StringBuilder result = new StringBuilder();
+//        for (String stringToConcat : spiltResult) {
+//            result.append(stringToConcat);
+//        }
+//        return Integer.parseInt(result.toString());
+
+        return Integer.parseInt(String.valueOf(number)
+                .chars()
+                .mapToObj(i -> String.valueOf(Character.getNumericValue(i)))
+                .sorted(Collections.reverseOrder()).collect(Collectors.joining()));
     }
 }
