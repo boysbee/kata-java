@@ -8,10 +8,6 @@ import java.util.LinkedList;
  */
 public class FindLongestRunStream {
 
-    public static void main(String[] args) {
-        System.out.println(indexOfLongestRun("abbcccddddcccbba"));
-    }
-
     public static int indexOfLongestRun(String str) {
         String result = max(str);
         return result.equals("") ? -1 : str.indexOf(result);
